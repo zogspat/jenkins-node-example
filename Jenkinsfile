@@ -36,7 +36,7 @@ pipeline {
       {
         script
         {
-           kubernetesDeploy(configs: "kubeDepPlusService.yaml", secretName: "kubeconfig")
+           kubernetesDeploy(configs: "kubeDepPlusService.yaml", secretName: "kubetoken")
         }
       }
     }
