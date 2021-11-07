@@ -1,0 +1,13 @@
+{
+  "name": "wpapisrv",
+  "version": "1.0.0",
+  "description": "test express server - calls wp API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "got": "^11.8.2"
+  }
+}

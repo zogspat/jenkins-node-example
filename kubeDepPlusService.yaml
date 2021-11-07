@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpressapiclient
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: wordpressapiclient
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpressapiclient
+spec:
+  selector:
+    matchLabels:
+      app: wordpressapiclient
+  template:
+    metadata:
+      labels:
+        app: wordpressapiclient
+    spec:
+      containers:
+      - name: wordpressapiclient
+        image: zogspat/nodewpapiclient:latest
