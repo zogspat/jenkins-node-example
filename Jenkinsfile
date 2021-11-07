@@ -34,9 +34,9 @@ pipeline {
     {
       steps
       {
-        withKubeConfig(credentialsId: 'kubeconfig')
+        script
         {
-          sh "kubectl apply -f kubeDepPlusService.yaml"
+           kubernetesDeploy(configs: "kubeDepPlusService.yaml", kubeconfigId: "kubeconfig")
         }
       }
     }
