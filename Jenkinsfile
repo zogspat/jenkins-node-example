@@ -21,12 +21,9 @@ pipeline {
     {
       steps
       {
-        script
+        withKubeConfig(credentialsId: 'kubeconfig')
         {
-          docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials')
-          {
-            myapp.push("latest")
-          }
+          sh "kubectl apply -f kubeDepPlusService.yaml"
         }
       }
     }
