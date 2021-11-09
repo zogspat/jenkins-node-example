@@ -23,7 +23,7 @@ pipeline {
       { 
         script 
         { 
-          myapp = docker.withRegistry('', docker-hub-credentials) 
+          myapp = docker.withRegistry('', 'docker-hub-credentials') 
           { 
             myapp.push() 
           }
