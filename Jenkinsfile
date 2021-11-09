@@ -23,21 +23,11 @@ pipeline {
       { 
         script 
         { 
-          docker.withRegistry(docker-hub-credentials) 
+          myapp = docker.withRegistry(docker-hub-credentials) 
           { 
             dockerImage.push() 
           }
         } 
-      }
-    }
-    stage('Deploy to K8s')
-    {
-      steps
-      {
-        withKubeConfig(credentialsId: 'kubeconfig')
-        {
-          sh "kubectl apply -f kubeDepPlusService.yaml"
-        }
       }
     }
     stage('Deploy app to kubernetes')
