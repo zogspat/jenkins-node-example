@@ -17,7 +17,20 @@ pipeline {
         }
       }
     }
-    stage('Push image')
+    stage('Push to Docker Hub')
+    {
+      steps 
+      { 
+        script 
+        { 
+          docker.withRegistry(docker-hub-credentials) 
+          { 
+            dockerImage.push() 
+          }
+        } 
+      }
+    }
+    stage('Deploy to K8s')
     {
       steps
       {
