@@ -13,7 +13,7 @@ pipeline {
         echo 'Running number ${env.BUILD_ID} on ${env.JENKINS_URL}'
         script
         {
-          myapp = docker.build("zogspat/nodewpapiclient:latest")
+          myapp = docker.build("zogspat/nodewpapiclient:latest") 
         }
       }
     }
@@ -23,7 +23,7 @@ pipeline {
       { 
         script 
         { 
-          myapp = docker.withRegistry(myapp, docker-hub-credentials) 
+          myapp = docker.withRegistry('', docker-hub-credentials) 
           { 
             dockerImage.push() 
           }
